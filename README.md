@@ -1,75 +1,79 @@
 # 📡 TelecomX: Análisis de Fuga de Clientes (Churn Analysis)
 
 ![Python](https://img.shields.io/badge/Python-3.12-blue?style=for-the-badge&logo=python&logoColor=white)
-![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-150458?style=for-the-badge&logo=pandas)
+![Manager](https://img.shields.io/badge/Package_Manager-uv-purple?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-Completado-success?style=for-the-badge)
 
 ## 📋 Descripción del Proyecto
 
-Este proyecto aborda una problemática crítica en el sector de las telecomunicaciones: la **Retención de Clientes**. Utilizando un dataset de **TelecomX**, se desarrolló un flujo de trabajo de Ciencia de Datos para identificar patrones de comportamiento, limpiar datos complejos y predecir factores de riesgo asociados al abandono (*Churn*).
+Este proyecto simula un escenario real de **Ciencia de Datos** en el sector de las telecomunicaciones. El objetivo principal es analizar el ciclo de vida de los usuarios de **TelecomX** para identificar los factores determinantes en la **fuga de clientes (Churn)**.
 
-El proyecto simula un entorno real donde los datos provienen de fuentes externas (API/JSON) y requieren un preprocesamiento exhaustivo antes de ser analizados.
+El análisis abarca desde la ingesta de datos crudos complejos hasta la generación de estrategias de negocio para maximizar la retención.
 
-## 🚀 Características y Desafíos Técnicos
+## 🚀 Desafíos Técnicos y Soluciones
 
-Este notebook no es solo un análisis exploratorio; incluye desafíos de ingeniería de datos resueltos:
+Este repositorio demuestra competencias avanzadas en Ingeniería de Datos y Análisis:
 
-* **ETL de JSON Anidado:** Los datos crudos contenían estructuras complejas (diccionarios dentro de columnas). Se implementó un proceso de *flattening* para tabularizar la información.
-* **Limpieza de Datos Robusta:**
-    * Detección y conversión de "valores ocultos" (espacios vacíos en variables numéricas).
-    * Estandarización de tipos de datos (`object` -> `float`).
-    * Traducción y normalización de columnas a `snake_case`.
-* **Análisis Exploratorio (EDA):** Visualización de distribución de variables categóricas y numéricas para detectar correlaciones con la variable objetivo `Abandono`.
-
-## 📊 Insights Clave (Resultados)
-
-El análisis reveló que la fuga de clientes no es aleatoria. Los principales factores de riesgo detectados son:
-
-1.  🔴 **Contratos Mensuales:** La inestabilidad contractual es el predictor #1 de fuga.
-2.  📉 **La "Zona de Peligro":** Los clientes con menos de **12 meses** de antigüedad son los más vulnerables.
-3.  ⚠️ **Fricción en Fibra Óptica:** A pesar de ser un servicio premium, presenta tasas de cancelación anormalmente altas.
-4.  💸 **Métodos de Pago:** El uso de *Electronic Check* está fuertemente correlacionado con el abandono.
-
-## 🛠️ Tecnologías Utilizadas
-
-* **Python 3.12**
-* **Pandas:** Manipulación y limpieza de datos.
-* **Matplotlib & Seaborn:** Visualización de datos estadística.
-* **Requests:** Ingesta de datos desde repositorios remotos.
-
-## 💻 Instalación y Uso
-
-Sigue estos pasos para ejecutar el proyecto en tu entorno local:
-
-1.  **Clonar el repositorio:**
-    ```bash
-    git clone [https://github.com/tu-usuario/telecomx-churn.git](https://github.com/tu-usuario/telecomx-churn.git)
-    cd telecomx-churn
-    ```
-
-2.  **Crear un entorno virtual (Recomendado):**
-    ```bash
-    # Usando venv
-    python -m venv .venv
-    source .venv/bin/activate  # En Windows: .venv\Scripts\activate
-    
-    # O usando uv (si lo tienes instalado)
-    uv venv
-    ```
-
-3.  **Instalar dependencias:**
-    ```bash
-    pip install pandas matplotlib seaborn requests
-    ```
-
-4.  **Ejecutar el Notebook:**
-    ```bash
-    jupyter notebook TelecomX_LATAM.ipynb
-    ```
+* **⚡ Gestión Moderna con `uv`:** Uso de `uv` para una gestión de dependencias ultrarrápida y reproducible, asegurando que el entorno sea idéntico en cualquier máquina (`uv.lock`).
+* **🔄 ETL de Datos Anidados:** Los datos originales (JSON) presentaban una estructura anidada compleja. Se implementó un proceso de *flattening* (aplanamiento) para transformar diccionarios en variables tabulares útiles.
+* **🧹 Limpieza de Alta Calidad:** Se logró un dataset con **0% de valores nulos** tras detectar y corregir datos vacíos ocultos y errores de tipado en variables financieras.
+* **📊 Storytelling con Datos:** Traducción de hallazgos estadísticos en recomendaciones estratégicas claras.
 
 ## 📂 Estructura del Proyecto
 
 ```text
-├── TelecomX_LATAM.ipynb   # Notebook principal con todo el análisis
-├── README.md              # Documentación del proyecto
-└── requirements.txt       # (Opcional) Lista de dependencias
+├── .venv/                   # Entorno virtual gestionado por uv
+├── TelecomX_Data.json       # Dataset crudo (Fuente original)
+├── TelecomX_diccionario.md  # Metadatos y descripción de variables
+├── TelecomX_LATAM.ipynb     # Notebook principal (ETL + EDA + Insights)
+├── pyproject.toml           # Definición de dependencias del proyecto
+├── uv.lock                  # Archivo de bloqueo para reproducibilidad exacta
+└── README.md                # Documentación del proyecto
+```
+
+## 📊 Insights Clave (Resultados)
+
+El análisis exploratorio reveló 4 patrones críticos de comportamiento:
+
+1.  🔴 **El Factor "Mes a Mes":** Los contratos mensuales son el predictor #1 de fuga. La fidelidad aumenta drásticamente en contratos anuales.
+2.  📉 **La Zona de Peligro:** Los clientes con **menos de 12 meses** de antigüedad son los más vulnerables.
+3.  ⚠️ **Paradoja de la Fibra Óptica:** A pesar de ser un servicio premium, presenta tasas de cancelación anormalmente altas (posible falla técnica o de precio).
+4.  💸 **Fricción en Pagos:** El uso de *Electronic Check* está fuertemente correlacionado con el abandono.
+
+## 💻 Instalación y Uso (Workflow con uv)
+
+Este proyecto utiliza **uv** para garantizar la reproducibilidad exacta del entorno.
+
+**1. Clonar el repositorio:**
+```bash
+git clone https://github.com/tu-usuario/telecomx-churn.git
+cd telecomx-churn
+```
+
+**2. Sincronizar el entorno:**
+Al tener el archivo `uv.lock`, solo necesitas un comando para instalar Python y todas las dependencias exactas:
+```bash
+uv sync
+```
+
+**3. Ejecutar el análisis:**
+Puedes lanzar Jupyter Notebook utilizando el entorno gestionado por uv:
+```bash
+uv run jupyter notebook
+```
+*(Opcional) Si prefieres activar el entorno manualmente:*
+```bash
+source .venv/bin/activate  # Mac/Linux
+.venv\Scripts\activate     # Windows
+jupyter notebook
+```
+
+## 🛠️ Tecnologías Utilizadas
+
+* **Python 3.12**
+* **Pandas:** Manipulación y limpieza de datos (Wrangling).
+* **Matplotlib & Seaborn:** Visualización de datos.
+* **Requests:** Ingesta de datos vía API.
+* **uv:** Gestión de dependencias y entornos virtuales.
+
+---
