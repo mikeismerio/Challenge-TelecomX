@@ -61,7 +61,7 @@ Puedes lanzar Jupyter Notebook utilizando el entorno gestionado por uv:
 ```bash
 uv run jupyter notebook
 ```
-*(Opcional) Si prefieres activar el entorno manualmente:*
+*Si prefieres activar el entorno manualmente:*
 ```bash
 source .venv/bin/activate  # Mac/Linux
 .venv\Scripts\activate     # Windows
